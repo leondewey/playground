@@ -10,4 +10,7 @@ export default (state, actions) =>
     <Title url='/'>Home</Title>
     <Button onclick={actions.add}>{state.count}</Button>
     <Button onclick={e => actions.router.go('/beers')}>Beers</Button>
+    <div>
+      Hello worldxz
+    </div>
   </Layout>
