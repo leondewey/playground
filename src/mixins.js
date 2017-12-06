@@ -5,11 +5,13 @@ export const Logger = () => ({
 })
 
 const localStoragState = JSON.parse(localStorage.getItem('state'))
-export const Persist = ({ state }) => ({
-  state: localStoragState || state,
-  events: {
-    render: (state, actions, data) => {
-      localStorage.setItem('state', JSON.stringify(state))
+export const Persist = ({ state }) => {
+  return {
+    state: localStoragState || state,
+    events: {
+      render: (state, actions, data) => {
+        localStorage.setItem('state', JSON.stringify(state))
+      }
     }
   }
-})
+}

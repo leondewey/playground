@@ -1,9 +1,17 @@
 import { h } from 'hyperapp'
-import Button from '../components/button'
+import Button from './button'
+
+const style = {
+  root: {
+    listStyle: 'none',
+    padding: 0,
+    margin: 0
+  }
+}
 
 export default ({name, onclick}) => {
   return (
-    <li>
+    <li style={style.root}>
       <Button onclick={onclick}>{name}</Button>
     </li>
   )
