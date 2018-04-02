@@ -1,4 +1,4 @@
 [build]
   Command = "yarn build && yarn build:functions"
   Functions = "dist/functions"
-  Publish = "build"
+  Publish = "dist"
