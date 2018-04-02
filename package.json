@@ -1,27 +1,51 @@
 {
-  "name": "hyperapp-flow",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "hyperapp": "github:hyperapp/hyperapp"
-  },
-  "devDependencies": {
-    "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.1",
-    "babel-plugin-transform-react-jsx": "^6.23.0",
-    "babel-preset-env": "^1.2.2",
-    "babel-preset-flow": "^6.23.0",
-    "babel-preset-stage-3": "^6.22.0",
-    "flow-bin": "^0.42.0",
-    "flow-typed": "^2.0.0",
-    "html-webpack-plugin": "^2.28.0",
-    "jest": "^20.0.4",
-    "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.2"
-  },
+  "name": "hyperapp-boilerplate",
+  "version": "0.0.3",
+  "description": "This is a sample/boilerplate project that shows how to create a production-ready hyperapp application.",
   "scripts": {
-    "start": "webpack-dev-server --inline --hot --history-api-fallback",
-    "build": "webpack -p"
+    "build": "taskr build release",
+    "start": "taskr watch",
+    "preserve": "npm run build",
+    "serve": "serve release -s -p 4000",
+    "start:functions": "netlify-lambda serve functions"
+  },
+  "main": "src/app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tzellman/hyperapp-boilerplate.git"
+  },
+  "author": "Tom Zellman <tzellman@gmail.com> (@tzellman)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tzellman/hyperapp-boilerplate/issues"
+  },
+  "homepage": "https://github.com/tzellman/hyperapp-boilerplate#readme",
+  "devDependencies": {
+    "@taskr/clear": "^1.1.0",
+    "@taskr/concat": "^1.1.0",
+    "@taskr/esnext": "^1.1.0",
+    "@taskr/htmlmin": "^1.1.0",
+    "@taskr/postcss": "^1.1.2",
+    "@taskr/rev": "^1.1.0",
+    "@taskr/sass": "^1.1.0",
+    "@taskr/uglify": "^1.1.0",
+    "@taskr/watch": "^1.1.0",
+    "autoprefixer": "^7.1.4",
+    "babel-core": "^6.26.0",
+    "browser-sync": "^2.18.8",
+    "fly-precache": "^2.1.0",
+    "fly-rollup": "^2.1.0",
+    "picostyle": "^0.2.0",
+    "rollup": "^0.50.0",
+    "rollup-plugin-buble": "^0.16.0",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^2.0.0",
+    "serve": "^6.2.0",
+    "taskr": "^1.1.0"
+  },
+  "dependencies": {
+    "hyperapp": "0.12.1",
+    "netlify-lambda": "^1.0.0-babel-7-beta"
   }
 }

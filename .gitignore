@@ -65,3 +65,6 @@ distribution/*
 
 # it can contain the npm token...
 .npmrc
+
+
+.cache

@@ -1,7 +1,6 @@
 {
   "presets": [
     ["env", { "modules": false }],
-    "flow",
     "stage-3"
   ],
   "plugins": [
