@@ -4,6 +4,7 @@
   "description": "This is a sample/boilerplate project that shows how to create a production-ready hyperapp application.",
   "scripts": {
     "build": "taskr build release",
+    "build:functions": "netlify-lambda build functions",
     "start": "taskr watch",
     "preserve": "npm run build",
     "serve": "serve release -s -p 4000",
