@@ -1,50 +1,39 @@
-[![GitHub issues](https://img.shields.io/github/issues/tzellman/hyperapp-boilerplate.svg)](https://github.com/tzellman/hyperapp-boilerplate/issues)
-[![dependencies](https://david-dm.org/tzellman/hyperapp-boilerplate.svg)](https://david-dm.org/tzellman/hyperapp-boilerplate)
+This project is based on [Create React App](https://github.com/facebookincubator/create-react-app). (For more information about Create react App, check their full [documentation](https://github.com/facebookincubator/create-react-app#create-react-app).)
 
-# [HyperApp](https://github.com/hyperapp/hyperapp) Boilerplate
+The main addition is a new folder: `src/lambda`. Each JavaScript file in there will automatically be prepared for Lambda function deployment.
 
-The purpose of this example was to create a starting-point for a [HyperApp](https://github.com/hyperapp/hyperapp) project.
+As an example, we've included a small `src/lambda/hello.js` function, which will be deployed to `/.netlify/functions/hello`.
 
-I decided to use [Taskr](https://github.com/lukeed/taskr) along with [Rollup](https://github.com/rollup/rollup), since the
-combination of the two seems to create a pleasant development/build experience.
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify/create-react-app-lambda)
 
-I suppose this example can also be used as a starting point for a Taskr/Rollup app.
+## Babel/webpack compilation
 
-## Getting started
+All functions are compiled with webpack using the Babel Loader, so you can use modern JavaScript, import npm modules, etc., without any extra setup.
 
-```bash
-npm install
-npm start
+## Local Development
+
+Before developing, clone the repository and run `yarn` from the root of the repo to install all dependencies.
+
+### Run the functions dev server
+
+From inside the project folder, run:
+
+```
+yarn start:lambda
 ```
 
-Your browser should have automatically launched [http://localhost:4000](http://localhost:4000)!
+This will open a local server running at `http://localhost:9000` serving your Lambda functions, updating as you make changes in the `src/lambda` folder.
 
-Any changes you make to your code will also automatically be reflected in the browser.
+You can then access your functions directly at `http://localhost:9000/{function_name}`, but to access them with the app, you'll need to start the app dev server.
 
-You can also view the example app here: [https://tzellman.github.io/hyperapp-boilerplate/](https://tzellman.github.io/hyperapp-boilerplate/).
+### Run the app dev server
 
-## Building a release
+While the functions server is still running, open a new terminal tab and run:
 
-```bash
-npm run build
+```
+yarn start
 ```
 
-This will generate a `release` directory with your minified/rev'd assets.
+This will start the normal create-react-app dev server and open your app at `http://localhost:3000`.
 
-
-## Using `serve`
-
-```bash
-npm run serve
-```
-
-This will use [serve](https://github.com/zeit/serve) to statically serve your app from the `release` directory.
-
-## Credits
-
-The basis of the counter code was mostly copied from @selfup's [hyperapp-one]()https://github.com/selfup/hyperapp-one) example.
-I also thank @lukeed and @jbucaran for all of the `taskr` examples, and the library itself.
-
-## Author
-
-Tom Zellman ([@tzellman](https://twitter.com/tzellman))
+Local in-app requests to the relative path `/.netlify/functions/*` will automatically be proxied to the local functions dev server.
